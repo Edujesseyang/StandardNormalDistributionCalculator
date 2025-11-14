@@ -40,7 +40,7 @@ public class MainPage extends Stage {
         }
 
         Label title = new Label("Standard Normal Distribution");
-        Text xName = new Text("x = ");
+        Text xName = new Text("z = ");
         TextField xInput = new TextField(xText);
         xInput.setPromptText("The value of z");
         HBox line1 = new HBox(xName, xInput);
@@ -49,7 +49,7 @@ public class MainPage extends Stage {
 
         Text pName = new Text(" P(Z < z) = ");
         TextField pInput = new TextField(pText);
-        pInput.setPromptText("The probability of Z < x");
+        pInput.setPromptText("The probability of Z < z");
         HBox line2 = new HBox(pName, pInput);
         line2.setAlignment(Pos.CENTER);
         line2.setSpacing(10);
@@ -66,7 +66,7 @@ public class MainPage extends Stage {
         Button calculateP = new Button("Calculate Probability");
         calculateP.setOnAction(e -> pageController.getProbability(xInput.getText()));
 
-        Button calculateX = new Button("Calculate X value");
+        Button calculateX = new Button("Calculate z value");
         calculateX.setOnAction(e -> pageController.getXValue(pInput.getText()));
 
         Button reset = new Button("Clear");
