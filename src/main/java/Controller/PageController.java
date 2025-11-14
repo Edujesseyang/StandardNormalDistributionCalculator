@@ -5,8 +5,8 @@ import View.MainPage;
 import javafx.stage.Stage;
 
 public class PageController {
-    private DataTable dataTable = DataTable.getInstance();
-    private Stage page;
+    private final DataTable dataTable = DataTable.getInstance();
+    private final Stage page;
 
     public PageController(Stage page) {
         this.page = page;
@@ -37,11 +37,9 @@ public class PageController {
         int ansIndex;
         if (parsedInput < 0.5) {
             ansIndex = dataTable.findX(1 - parsedInput);
-            System.out.println("P < 0.5 : finding : " + (1 -parsedInput) + " Index = " + ansIndex);
             ansIndex = ansIndex == -1 ? -358 : -ansIndex;
         } else {
             ansIndex = dataTable.findX(parsedInput);
-            System.out.println("P > 0 : finding : " + parsedInput + " Index = " + ansIndex);
             ansIndex = ansIndex == -1 ? 358 : ansIndex;
         }
         double ans = ansIndex / 100.0;

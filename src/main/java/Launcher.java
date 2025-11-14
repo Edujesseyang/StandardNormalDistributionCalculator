@@ -6,5 +6,6 @@ public class Launcher extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         MainPage mainPage = new MainPage(null, null);
+        mainPage.show();
     }
 }

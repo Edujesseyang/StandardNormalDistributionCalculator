@@ -11,8 +11,10 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.util.Locale;
+
 public class MainPage extends Stage {
-    private PageController pageController;
+    private final PageController pageController;
 
     public MainPage(Double x, Double p) {
         pageController = new PageController(this);
@@ -23,10 +25,21 @@ public class MainPage extends Stage {
     }
 
     public VBox buildPage(Double xValue, Double pValue) {
-        String xText = xValue == null ? "" : xValue.toString();
-        String pText = pValue == null ? "" : pValue.toString();
+        String xText, pText;
+        if (xValue == null) {
+            xText = "0";
+        } else {
+            xValue = Math.round(xValue * 100.0) / 100.0;
+            xText = String.format(Locale.US, "%.2f", xValue);
+        }
+        if (pValue == null) {
+            pText = "0";
+        } else {
+            pValue = Math.round(pValue * 10000.0) / 10000.0;
+            pText = String.format(Locale.US, "%.4f", pValue);
+        }
 
-        Label title = new Label("Standardized Normal Distribution");
+        Label title = new Label("Standard Normal Distribution");
         Text xName = new Text("x = ");
         TextField xInput = new TextField(xText);
         xInput.setPromptText("The value of z");
